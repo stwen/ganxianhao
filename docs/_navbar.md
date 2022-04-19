@@ -9,3 +9,7 @@
 * 友情链接
     * [Docsify](https://docsify.js.org/#/)
     * [博客园](https://www.cnblogs.com/)
+
+* 切换主题
+  * [Docsify](https://docsify.js.org/#/)
+  * [博客园](https://www.cnblogs.com/)
