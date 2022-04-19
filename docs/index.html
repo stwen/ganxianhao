@@ -1,105 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CodeGuide | 架构攻城之路</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/vue.css">
-  <link rel="stylesheet" href="/assets/css/gitalk.css">
-  <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b3354307876925c625a24bb138d2177c";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-  </script>
-</head>
-<body>
-<nav>
-  <a href="#/">EN</a>
-  <a href="#/zh-cn/">中文</a>
-</nav>
-<div id="app"></div>
-<script>
-    var gitalkConfig = {
-      clientID: '4a657aa4ae6c0f1862a1',
-      clientSecret: '94793d5bac0c884a8798ea941f7c5bc9fb004720',
-      repo: 'stwen.github.io',
-      owner: 'stwen',
-      admin: ["stwen"],
-      distractionFreeMode: false
-    };
-    window.$docsify = {
-      // 项目名称
-      name: 'name',
-      // 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
-      repo: 'https://stwen.github.io/ganxianhao',
-      // 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
-      loadSidebar: true,
-      // 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
-      loadNavbar: true,
-      // 封面支持，默认加载的是项目根目录下的_coverpage.md文件
-      coverpage: true,
-      // 最大支持渲染的标题层级
-      maxLevel: 5,
-      // 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
-      subMaxLevel: 4,
-      // 小屏设备下合并导航栏到侧边栏
-      mergeNavbar: true,
 
-      auto2top: true,
-      search: {
-        paths: 'auto',
-        placeholder: '🔍 Type to search ',
-        noData: '😞 No Results! ',
-        depth: 6
-      },
-      pagination: {
-        previousText: 'PREVIOUS',
-        nextText: 'NEXT',
-        crossChapter: true
-      },
-      plugins: [
-        function (hook, vm) {
-          hook.doneEach(function() {
-            var label, domObj, main, divEle, gitalk;
-            label = md5(decodeURI(vm.route.path.split("/").pop()));
-            domObj = Docsify.dom;
-            main = domObj.getNode("#main");
+    <head>
+        <meta charset="UTF-8">
+        <title>Docsify-Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="description" content="Description">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- 设置浏览器图标 -->
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+        <!-- 默认主题 -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+    </head>
 
-            Array.apply(
-              null,
-              document.querySelectorAll("div.gitalk-container")
-            ).forEach(function(ele) {
-              ele.remove();
-            });
-      
-            divEle = domObj.create("div");
-            divEle.id = "gitalk-container-" + label;
-            divEle.className = "gitalk-container";
-            divEle.style = "width: " + main.clientWidth + "px; margin: 0 auto 20px;";
-            domObj.appendTo(domObj.find(".content"), divEle);
-            gitalk = new Gitalk(
-              Object.assign(gitalkConfig, { id: !label ? "home" : label })
-            );
-            gitalk.render("gitalk-container-" + label);
-          });
-        }
-      ]
-    }                                 
-  </script>
+    <body>
+        <!-- 定义加载时候的动作 -->
+        <div id="app">加载中...</div>
+        <script>
+            window.$docsify = {
+                // 项目名称
+                name: 'stwen',
+                // 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
+                repo: 'https://github.com/stwen/ganxianhao',
+                // 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
+                loadSidebar: true,
+                // 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
+                loadNavbar: true,
+                // 封面支持，默认加载的是项目根目录下的_coverpage.md文件
+                coverpage: true,
+                // 最大支持渲染的标题层级
+                maxLevel: 5,
+                // 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
+                subMaxLevel: 4,
+                // 小屏设备下合并导航栏到侧边栏
+                mergeNavbar: true,
+            }
+        </script>
+        <script>
+            // 搜索配置(url：https://docsify.js.org/#/zh-cn/plugins?id=%e5%85%a8%e6%96%87%e6%90%9c%e7%b4%a2-search)
+            window.$docsify = {
+                search: {
+                    maxAge: 86400000,// 过期时间，单位毫秒，默认一天
+                    paths: auto,// 注意：仅适用于 paths: 'auto' 模式
+                    placeholder: '搜索',
+                    // 支持本地化
+                    placeholder: {
+                        '/zh-cn/': '搜索',
+                        '/': 'Type to search'
+                    },
+                    noData: '找不到结果',
+                    depth: 4,
+                    hideOtherSidebarContent: false,
+                    namespace: 'Docsify-Guide',
+                }
+            }
+        </script>
+        <!-- docsify的js依赖 -->
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+        <!-- emoji表情支持 -->
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+        <!-- 图片放大缩小支持 -->
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+        <!-- 搜索功能支持 -->
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+        <!--在所有的代码块上添加一个简单的Click to copy按钮来允许用户从你的文档中轻易地复制代码-->
+        <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+    </body>
 
-<script src="/assets/js/md5.js"></script>
-<script src="/assets/js/docsify.min.js"></script>
-<script src="/assets/js/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
-<script src="/assets/js/docsify-pagination.min.js"></script>
-<script src="/assets/js/zoom-image.js"></script>
-<script src="/assets/js/prism-bash.js"></script>
-<script src="/assets/js/prism-java.min.js"></script>
-</body>
 </html>
